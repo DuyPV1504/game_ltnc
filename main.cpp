@@ -84,9 +84,46 @@ SDL_Texture* tileLightTexture64_8 = window.loadTexture("res/gfx/tile64_light_8.p
 SDL_Texture* tileLightTexture64_9 = window.loadTexture("res/gfx/tile64_light_9.png");
 SDL_Texture* tileLightTexture64_10 = window.loadTexture("res/gfx/tile64_light_10.png");
 
+/*****/
+SDL_Texture* ballShadowTexture = window.loadTexture("res/gfx/ball_shadow.png");
+SDL_Texture* bgTextureLight = window.loadTexture("res/gfx/bg_light.png");
+SDL_Texture* uiBgTexture = window.loadTexture("res/gfx/UI_bg.png");
+SDL_Texture* levelTextBgTexture = window.loadTexture("res/gfx/levelText_bg.png");
+SDL_Texture* powerMeterTexture_FG = window.loadTexture("res/gfx/powermeter_fg.png");
+SDL_Texture* powerMeterTexture_BG = window.loadTexture("res/gfx/powermeter_bg.png");
+SDL_Texture* powerMeterTexture_overlay = window.loadTexture("res/gfx/powermeter_overlay.png");
+SDL_Texture* title_BG  = window.loadTexture("res/gfx/title_bg.png");
+SDL_Texture* logoSDL = window.loadTexture("res/gfx/sdl.png");
+SDL_Texture* logoTexture = window.loadTexture("res/gfx/logo.png");
+SDL_Texture* click2start = window.loadTexture("res/gfx/click2start.png");
+SDL_Texture* endscreenOverlayTexture = window.loadTexture("res/gfx/end.png");
+SDL_Texture* splashBgTexture = window.loadTexture("res/gfx/splashbg.png");
+SDL_Texture* helpMenu = window.loadTexture("res/gfx/help.png");
+SDL_Texture* chooseBallMenu = window.loadTexture("res/gfx/chooseBall.png");
+SDL_Texture* loseScreen = window.loadTexture("res/gfx/lose.png");
+
+SDL_Texture* playWhenHovered = window.loadTexture("res/gfx/play_hovered.png");
+SDL_Texture* helpWhenHovered = window.loadTexture("res/gfx/help_hovered.png");
+
+SDL_Texture* sand32 = window.loadTexture("res/gfx/sand32.png");
+SDL_Texture* ice32 = window.loadTexture("res/gfx/ice32.png");
+SDL_Texture* sand64 = window.loadTexture("res/gfx/sand64.png");
+SDL_Texture* ice64 = window.loadTexture("res/gfx/ice64.png");
+SDL_Texture* waterTexture64 = window.loadTexture("res/gfx/water_64.png");
+SDL_Texture* waterTexture32 = window.loadTexture("res/gfx/water_32.png");
+SDL_Texture* spring64 = window.loadTexture("res/gfx/spring64.png");
+SDL_Texture* spring32 = window.loadTexture("res/gfx/spring32.png");
+
 Mix_Chunk* chargeSfx = Mix_LoadWAV("res/sfx/charge.mp3");
 Mix_Chunk* swingSfx = Mix_LoadWAV("res/sfx/swing.mp3");
 Mix_Chunk* holeSfx = Mix_LoadWAV("res/sfx/hole.mp3");
+Mix_Chunk* waterSfx = Mix_LoadWAV("res/sfx/water.mp3");
+Mix_Chunk* bounceSfx = Mix_LoadWAV("res/sfx/bounce.mp3");
+Mix_Chunk* openingSfx = Mix_LoadWAV("res/sfx/SUPERCELL.mp3");
+Mix_Chunk* loseSfx = Mix_LoadWAV("res/sfx/lose.mp3");
+Mix_Chunk* winSfx = Mix_LoadWAV("res/sfx/win.mp3");
+
+Mix_Music* lobbyMusic = Mix_LoadMUS("res/sfx/SPYxFAMILY.mp3");
 
 
 SDL_Color white = { 255, 255, 255 };
