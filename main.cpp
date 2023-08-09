@@ -309,6 +309,57 @@ void titleScreen()
 			    }
 				break;
 
+				//chon ball
+            case SDL_KEYDOWN:
+                switch (event.key.keysym.sym)
+                {
+                case SDLK_1:
+                    checkGolfBall = true;
+                    std::cout << "Key 1 detected!" << std::endl;
+                    std::cout << ">> Ball chosen: Golf Ball" << std::endl;
+                    break;
+                case SDLK_2:
+                    checkAPlus = true;
+                    std::cout << "Key 2 detected!" << std::endl;
+                    std::cout << ">> Ball chosen: A+ Ball" << std::endl;
+                    break;
+                case SDLK_3:
+                    checkPenguin = true;
+                    std::cout << "Key 3 detected!" << std::endl;
+                    std::cout << ">> Ball chosen: Penguin Ball" << std::endl;
+                    break;
+                case SDLK_4:
+                    checkTVHSV = true;
+                    std::cout << "Key 4 detected!" << std::endl;
+                    std::cout << ">> Ball chosen: TVHSV Ball" << std::endl;
+                    break;
+                case SDLK_5:
+                    checkJAPIT = true;
+                    std::cout << "Key 5 detected!" << std::endl;
+                    std::cout << ">> Ball chosen: JAPIT Ball" << std::endl;
+                    break;
+                case SDLK_6:
+                    checkAnya = true;
+                    std::cout << "Key 6 detected!" << std::endl;
+                    std::cout << ">> Ball chosen: Anya...? Ball" << std::endl;
+                    break;
+                }
+
+            break;
+			}
+		}
+
+        window.renderCenter(0, 240 - 46 - 48 + 3 - 16*5, "PLAY", font32, black);
+		window.renderCenter(0, 240 - 46 - 48 - 16*5, "PLAY", font32, white);
+        window.renderCenter(0, 240 + 18 - 48 + 3 - 16*5, "CHOOSE BALL", font32, black);
+		window.renderCenter(0, 240 + 18 - 48 - 16*5, "CHOOSE BALL", font32, white);
+		window.renderCenter(0, 240 + 80 - 48 + 3 - 16*5, "HELP", font32, black);
+		window.renderCenter(0, 240 + 80 - 48 - 16*5, "HELP", font32, white);
+		window.display();
+	}
+}
+
+
 std::vector<Hole> holes = {Hole(Vector2f(0, 0), holeTexture), Hole(Vector2f(0, 0), holeTexture)};
 
 std::vector<Tile> loadTiles(int level)
