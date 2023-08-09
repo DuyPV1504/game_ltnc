@@ -883,6 +883,72 @@ std::vector<Water> loadWaters(int level)
 	return temp;
 }
 
+
+
+std::vector<Ice> loadIces(int level)
+{
+	std::vector<Ice> temp = {};
+	switch(level)
+	{
+		case 0:
+
+		break;
+		case 1:
+            temp.push_back(Ice(Vector2f(64*3 , 64*2), ice64));
+            temp.push_back(Ice(Vector2f(64*4 , 64*2), ice64));
+            temp.push_back(Ice(Vector2f(64*5 , 64*2), ice64));
+            temp.push_back(Ice(Vector2f(64*6 , 64*2), ice64));
+		break;
+		case 2:
+
+		break;
+		case 3:
+
+		break;
+
+		case 4:
+        break;
+	}
+	return temp;
+}
+
+std::vector<Spring> loadSprings(int level)
+{
+	std::vector<Spring> temp = {};
+	switch(level)
+	{
+		case 0:
+
+		break;
+		case 1:
+            for (int i=3; i<=6; i++) temp.push_back(Spring(Vector2f(64*i, 64*1), spring64));
+
+		break;
+		case 2:
+            temp.push_back(Spring(Vector2f(32*7, 32*0), spring32));
+            temp.push_back(Spring(Vector2f(32*8, 32*0), spring32));
+            temp.push_back(Spring(Vector2f(32*9, 32*0), spring32));
+            temp.push_back(Spring(Vector2f(32*10, 32*0), spring32));
+            temp.push_back(Spring(Vector2f(32*11, 32*0), spring32));
+            temp.push_back(Spring(Vector2f(32*12, 32*0), spring32));
+
+            temp.push_back(Spring(Vector2f(32*7, 32*14), spring32));
+            temp.push_back(Spring(Vector2f(32*8, 32*14), spring32));
+            temp.push_back(Spring(Vector2f(32*9, 32*14), spring32));
+            temp.push_back(Spring(Vector2f(32*10, 32*14), spring32));
+            temp.push_back(Spring(Vector2f(32*11, 32*14), spring32));
+            temp.push_back(Spring(Vector2f(32*12, 32*14), spring32));
+		break;
+		case 3:
+
+		break;
+
+		case 4:
+        break;
+	}
+	return temp;
+}
+
 int level = 0;
 std::vector<Tile> tiles = loadTiles(level);
 
