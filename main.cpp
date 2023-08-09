@@ -166,6 +166,148 @@ Ball ballsTVHSV[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), tvhsv, pointTexture, 
 Ball ballsJAPIT[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), japit, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
 Ball ballsAnya[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), anya, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
 
+void titleScreen()
+{
+	if (SDL_GetTicks() < 2000)
+	{
+	    //first screen
+		if (!swingPlayed)
+		{
+			Mix_PlayChannel(-1, openingSfx, 0);
+			swingPlayed = true;
+		}
+		//Get our controls and events
+		while (SDL_PollEvent(&event))
+		{
+			switch(event.type)
+			{
+			case SDL_QUIT:
+				gameRunning = false;
+				break;
+
+            case SDL_KEYDOWN:
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                gameRunning = false;
+                break;
+                }
+			}
+		}
+
+		window.clear();
+		window.render(0, 0, title_BG);
+		window.render(75, 110, logoSDL);
+		window.renderCenter(0, -80 + 3, "A Game made with", font32, black);
+		window.renderCenter(0, -80, "A Game made with", font32, white);
+		window.display();
+		SDL_Delay(1000);
+	}
+	else
+	{
+	    //second title screen
+		if (!secondSwingPlayed)
+		{
+//			Mix_PlayChannel(-1, swingSfx, 0);
+			Mix_PlayMusic(lobbyMusic, -1);
+			secondSwingPlayed = true;
+		}
+		lastTick = currentTick;
+		currentTick = SDL_GetPerformanceCounter();
+		deltaTime = (double)((currentTick - lastTick)*1000 / (double)SDL_GetPerformanceFrequency() );
+
+        bool insidePlay = false;
+        bool insideChooseBall = false;
+        bool insideHelp = false;
+        //render cai nay truoc de luc sau chi can thay doi cai hien va k hien
+        window.clear();
+        window.render(0, 0, bgTextureLight);
+		window.render(168, 240 - 170 - 50 + 4*SDL_sin(SDL_GetTicks()*(3.14/1500)), logoTexture); //sin pi
+        window.render(0, 0, click2start);
+//		else if (insidePlay) window.render(0, 0, playWhenHovered);
+//		else if (insideHelp) window.render(0, 0, helpWhenHovered);
+
+		//Get our controls and events
+		while (SDL_PollEvent(&event))
+		{
+			switch(event.type)
+			{
+			case SDL_QUIT:
+				gameRunning = false;
+				break;
+
+			// cac menu	trong title doan them vao
+            case SDL_MOUSEMOTION:
+                {
+                    int x, y;
+                    SDL_GetMouseState(&x, &y);
+
+                    int play_x0 = 179, play_y0 = 279, play_x1 = 460, play_y1 = 330;
+                    int chooseBall_x0 = 179, chooseBall_y0 = 343, chooseBall_x1 = 460, chooseBall_y1 = 395;
+                    int help_x0 = 179, help_y0 = 407, help_x1 = 460, help_y1 = 458;
+
+                    if (x > play_x0 && x < play_x1 && y > play_y0 && y < play_y1) {
+                        insidePlay = true;
+                    }
+                    else if (x > chooseBall_x0 && x < chooseBall_x1 && y > chooseBall_y0 && y < chooseBall_y1) {
+                        insideChooseBall = true;
+                    }
+                    else if (x > help_x0 && x < help_x1 && y > help_y0 && y < help_y1) {
+                        insideHelp = true;
+                    }
+
+                    SDL_Delay(100);
+                }
+                break;
+
+            // thoat khoi title va vao game
+			case SDL_MOUSEBUTTONDOWN:
+			    {
+			        int x, y;
+                    SDL_GetMouseState(&x, &y);
+
+                    int play_x0 = 179, play_y0 = 279, play_x1 = 460, play_y1 = 330;
+                    int chooseBall_x0 = 179, chooseBall_y0 = 343, chooseBall_x1 = 460, chooseBall_y1 = 395;
+                    int help_x0 = 179, help_y0 = 407, help_x1 = 460, help_y1 = 458;
+
+                    if (x > play_x0 && x < play_x1 && y > play_y0 && y < play_y1) {
+                        insidePlay = true;
+                    }
+                    else if (x > chooseBall_x0 && x < chooseBall_x1 && y > chooseBall_y0 && y < chooseBall_y1) {
+                        insideChooseBall = true;
+                    }
+                    else if (x > help_x0 && x < help_x1 && y > help_y0 && y < help_y1) {
+                        insideHelp = true;
+                    }
+
+                    if (insidePlay && event.button.button == SDL_BUTTON_LEFT)
+                    {
+                        Mix_FreeMusic(lobbyMusic);
+                        Mix_PlayChannel(-1, holeSfx, 0);
+                        state = 1;
+                    }
+
+                    if (insideChooseBall && event.button.button == SDL_BUTTON_LEFT)
+                    {
+                    // Ball Selection *******************************************************//
+                        window.clear();
+                        window.render(0, 0, bgTextureLight);
+                        window.render(0, 0, chooseBallMenu);
+                        window.display();
+                        waitUntilKeyPressed();
+
+                    }
+                    //******************************//
+
+                    if (insideHelp && event.button.button == SDL_BUTTON_LEFT)
+                    {
+                        window.clear();
+                        window.render(0, 0, bgTextureLight);
+                        window.render(0, 0, helpMenu);
+                        window.display();
+                        waitUntilKeyPressed();
+                    }
+			    }
+				break;
 
 std::vector<Hole> holes = {Hole(Vector2f(0, 0), holeTexture), Hole(Vector2f(0, 0), holeTexture)};
 
@@ -427,70 +569,7 @@ void graphics()
 	window.display();
 }
 
-void titleScreen()
-{
-	if (SDL_GetTicks() < 2000)
-	{
-		if (!swingPlayed)
-		{
-			Mix_PlayChannel(-1, swingSfx, 0);
-			swingPlayed = true;
-		}
-		//Get our controls and events
-		while (SDL_PollEvent(&event))
-		{
-			switch(event.type)
-			{
-			case SDL_QUIT:
-				gameRunning = false;
-				break;
-			}
-		}
 
-		window.clear();
-		window.render(0, 0, bgTexture);
-		window.render(0, 0, splashBgTexture);
-		window.renderCenter(0, 0 + 3, "POLYMARS", font32, black);
-		window.renderCenter(0, 0, "POLYMARS", font32, white);
-		window.display();
-	}
-	else
-	{
-		if (!secondSwingPlayed)
-		{
-			Mix_PlayChannel(-1, swingSfx, 0);
-			secondSwingPlayed = true;
-		}
-		lastTick = currentTick;
-		currentTick = SDL_GetPerformanceCounter();
-		deltaTime = (double)((currentTick - lastTick)*1000 / (double)SDL_GetPerformanceFrequency() );
-
-		//Get our controls and events
-		while (SDL_PollEvent(&event))
-		{
-			switch(event.type)
-			{
-			case SDL_QUIT:
-				gameRunning = false;
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				if (event.button.button == SDL_BUTTON_LEFT)
-				{
-					Mix_PlayChannel(-1, holeSfx, 0);
-					state = 1;
-				}
-				break;
-			}
-		}
-		window.clear();
-		window.render(0, 0, bgTexture);
-		window.render(320 - 160, 240 - 100 - 50 + 4*SDL_sin(SDL_GetTicks()*(3.14/1500)), logoTexture);
-		window.render(0, 0, click2start);
-		window.renderCenter(0, 240 - 48 + 3 - 16*5, "LEFT CLICK TO START", font32, black);
-		window.renderCenter(0, 240 - 48 - 16*5, "LEFT CLICK TO START", font32, white);
-		window.display();
-	}
-}
 void game()
 {
 	if (state == 0)
