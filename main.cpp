@@ -641,6 +641,248 @@ std::vector<Tile> loadTiles(int level)
 	return temp;
 }
 
+std::vector<Sand> loadSands(int level)
+{
+	std::vector<Sand> temp = {};
+	switch(level)
+	{
+		case 0:
+
+//            temp.push_back(Sand(Vector2f(64*3, 64*3), sand));
+//            temp.push_back(Sand(Vector2f(64*3, 64*4), sand));
+//            temp.push_back(Sand(Vector2f(64*4, 64*4), sand));
+		break;
+		case 1:
+              temp.push_back(Sand(Vector2f(64*7, 64*4), sand64));
+		break;
+		case 2:
+
+		break;
+		case 3:
+
+		break;
+
+		case 4:
+        break;
+	}
+	return temp;
+}
+
+std::vector<Water> loadWaters(int level)
+{
+	std::vector<Water> temp = {};
+	switch(level)
+	{
+		case 0:
+
+
+		break;
+		case 1:
+            for (int i=0; i<=9; i++) temp.push_back(Water(Vector2f(64*i, 64*0), waterTexture64));
+            for (int i=0; i<=2; i++) temp.push_back(Water(Vector2f(64*i, 64*1), waterTexture64));
+            for (int i=7; i<=9; i++) temp.push_back(Water(Vector2f(64*i, 64*1), waterTexture64));
+            for (int i=0; i<=2; i++) temp.push_back(Water(Vector2f(64*i, 64*2), waterTexture64));
+            for (int i=7; i<=9; i++) temp.push_back(Water(Vector2f(64*i, 64*2), waterTexture64));
+            for (int i=0; i<=1; i++) temp.push_back(Water(Vector2f(64*i, 64*3), waterTexture64));
+            for (int i=8; i<=9; i++) temp.push_back(Water(Vector2f(64*i, 64*3), waterTexture64));
+            for (int i=9; i<=10; i++) {
+                for (int j=7; j<=8; j++) temp.push_back(Water(Vector2f(32*i, 32*j), waterTexture32));
+            }
+            temp.push_back(Water(Vector2f(64*0, 64*4), waterTexture64));
+            temp.push_back(Water(Vector2f(64*9, 64*4), waterTexture64));
+            temp.push_back(Water(Vector2f(64*4, 64*4), waterTexture64));
+            temp.push_back(Water(Vector2f(64*5, 64*4), waterTexture64));
+            for (int i=3; i<=6; i++) {
+                for (int j=5; j<=7; j++) temp.push_back(Water(Vector2f(64*i, 64*j), waterTexture64));
+            }
+            for (int i=5; i<=14; i++) temp.push_back(Water(Vector2f(32*i, 32*14), waterTexture32));
+
+		break;
+		case 2:
+            temp.push_back(Water(Vector2f(32*9, 32*4), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*4), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*9, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*5), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*8, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*9, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*11, 32*6), waterTexture32));
+
+            temp.push_back(Water(Vector2f(32*6, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*7, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*8, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*9, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*11, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*13, 32*7), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*8, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*9, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*11, 32*8), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*9, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*9), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*9, 32*10), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*10), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(64*0, 64*0), waterTexture64));
+		    temp.push_back(Water(Vector2f(64*0, 64*1), waterTexture64));
+		    temp.push_back(Water(Vector2f(32*2, 32*0), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*1), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*2), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*3), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*17, 64*0), waterTexture64));
+		    temp.push_back(Water(Vector2f(32*17, 64*1), waterTexture64));
+		    temp.push_back(Water(Vector2f(32*19, 32*0), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*19, 32*1), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*19, 32*2), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*19, 32*3), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(64*0, 32*11), waterTexture64));
+		    temp.push_back(Water(Vector2f(64*0, 32*13), waterTexture64));
+		    temp.push_back(Water(Vector2f(32*2, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*12), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*13), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*14), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*17, 32*11), waterTexture64));
+		    temp.push_back(Water(Vector2f(32*17, 32*13), waterTexture64));
+		    temp.push_back(Water(Vector2f(32*19, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*19, 32*12), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*19, 32*13), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*19, 32*14), waterTexture32));
+		break;
+		case 3:
+
+		break;
+
+		case 4:
+		    for (int i=2; i<=16; i++) temp.push_back(Water(Vector2f(32*i, 32*0), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*0, 32*0), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*0), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*1), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*1), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*1), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*1), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*2), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*2), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*2), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*2), waterTexture32));
+		    for (int i=4; i<=14; i++) temp.push_back(Water(Vector2f(32*i, 32*2), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*3), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*3), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*3), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*3), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*3), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*3), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*4), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*4), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*4), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*4), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*4), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*4), waterTexture32));
+		    for (int i=6; i<=12; i++) temp.push_back(Water(Vector2f(32*i, 32*4), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*5), waterTexture32));
+            temp.push_back(Water(Vector2f(32*6, 32*5), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*5), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*6), waterTexture32));
+            temp.push_back(Water(Vector2f(32*6, 32*6), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*6), waterTexture32));
+		    for (int i=8; i<=10; i++) temp.push_back(Water(Vector2f(32*i, 32*6), waterTexture32));
+
+
+		    temp.push_back(Water(Vector2f(32*0, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*7), waterTexture32));
+            temp.push_back(Water(Vector2f(32*6, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*8, 32*7), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*7), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*8), waterTexture32));
+            temp.push_back(Water(Vector2f(32*6, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*8), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*8), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*9), waterTexture32));
+            temp.push_back(Water(Vector2f(32*6, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*9), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*10, 32*9), waterTexture32));
+		    for (int i=6; i<=10; i++) temp.push_back(Water(Vector2f(32*i, 32*9), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*10), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*10), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*10), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*10), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*10), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*10), waterTexture32));
+            temp.push_back(Water(Vector2f(32*18, 32*10), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*4, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*12, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*11), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*11), waterTexture32));
+            temp.push_back(Water(Vector2f(32*18, 32*11), waterTexture32));
+		    for (int i=4; i<=12; i++) temp.push_back(Water(Vector2f(32*i, 32*11), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*12), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*2, 32*12), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*14, 32*12), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*12), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*12), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*13), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*13), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*13), waterTexture32));
+		    for (int i=2; i<=14; i++) temp.push_back(Water(Vector2f(32*i, 32*13), waterTexture32));
+
+		    temp.push_back(Water(Vector2f(32*0, 32*14), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*16, 32*14), waterTexture32));
+		    temp.push_back(Water(Vector2f(32*18, 32*14), waterTexture32));
+
+
+        break;
+	}
+	return temp;
+}
+
 int level = 0;
 std::vector<Tile> tiles = loadTiles(level);
 
