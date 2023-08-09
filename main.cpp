@@ -132,7 +132,41 @@ TTF_Font* font32 = TTF_OpenFont("res/font/font.ttf", 32);
 TTF_Font* font48 = TTF_OpenFont("res/font/font.ttf", 48);
 TTF_Font* font24 = TTF_OpenFont("res/font/font.ttf", 24);
 
-Ball balls[2] = {Ball(Vector2f(0, 0), ballTexture, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0), Ball(Vector2f(0, 0), ballTexture, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 1)};
+SDL_Event event;
+
+int state = 0; //0 = title screen, 1 = game, 2 = end screen
+
+Uint64 currentTick = SDL_GetPerformanceCounter();
+Uint64 lastTick = 0;
+double deltaTime = 0;
+
+int ballType = 0;
+
+bool gameRunning = true;
+bool mouseDown = false;
+bool mousePressed = false;
+
+bool swingPlayed = false;
+bool secondSwingPlayed = false;
+
+void waitUntilKeyPressed();
+
+//check ball skin
+bool checkGolfBall = false;
+bool checkAPlus = false;
+bool checkPenguin = false;
+bool checkTVHSV = false;
+bool checkJAPIT = false;
+bool checkAnya = false;
+
+Ball ballsGolf[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), ball, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
+Ball ballsAPlus[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), Aplus, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
+Ball ballsPenguin[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), penguin, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
+Ball ballsTVHSV[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), tvhsv, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
+Ball ballsJAPIT[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), japit, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
+Ball ballsAnya[1] = {Ball(Vector2f(24 + 32*1, 24 + 32*7), anya, pointTexture, powerMeterTexture_FG, powerMeterTexture_BG, 0)};
+
+
 std::vector<Hole> holes = {Hole(Vector2f(0, 0), holeTexture), Hole(Vector2f(0, 0), holeTexture)};
 
 std::vector<Tile> loadTiles(int level)
@@ -198,15 +232,6 @@ std::vector<Tile> loadTiles(int level)
 int level = 0;
 std::vector<Tile> tiles = loadTiles(level);
 
-bool gameRunning = true;
-bool mouseDown = false;
-bool mousePressed = false;
-
-bool swingPlayed = false;
-bool secondSwingPlayed = false;
-
-
-SDL_Event event;
 
 int state = 0; //0 = title screen, 1 = game, 2 = end screen
 
