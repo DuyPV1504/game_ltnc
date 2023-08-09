@@ -360,63 +360,282 @@ void titleScreen()
 }
 
 
-std::vector<Hole> holes = {Hole(Vector2f(0, 0), holeTexture), Hole(Vector2f(0, 0), holeTexture)};
+/std::vector<Hole> holes = {Hole(Vector2f(0, 0), holeTexture), Hole(Vector2f(0, 0), holeTexture)};
+std::vector<Hole> holes = {Hole(Vector2f(24 + 32*17, 22 + 32*7), holeTexture)};
 
+//load obstacles
 std::vector<Tile> loadTiles(int level)
 {
 	std::vector<Tile> temp = {};
 	switch(level)
 	{
 		case 0:
-			temp.push_back(Tile(Vector2f(64*3, 64*3), tileDarkTexture64));
-			temp.push_back(Tile(Vector2f(64*4, 64*3), tileDarkTexture64));
 
-			temp.push_back(Tile(Vector2f(64*0, 64*3), tileDarkTexture64));
-			temp.push_back(Tile(Vector2f(64*1, 64*3), tileDarkTexture64));
-
-			temp.push_back(Tile(Vector2f(64*3 + 64*5, 64*3), tileLightTexture64));
-			temp.push_back(Tile(Vector2f(64*4 + 64*5, 64*3), tileLightTexture64));
-
-			temp.push_back(Tile(Vector2f(64*0 + 64*5, 64*3), tileLightTexture64));
-			temp.push_back(Tile(Vector2f(64*1 + 64*5, 64*3), tileLightTexture64));
 		break;
 		case 1:
-			temp.push_back(Tile(Vector2f(64*2, 64*3), tileDarkTexture64));
 
-			temp.push_back(Tile(Vector2f(64*4 + 64*5, 64*3), tileLightTexture64));
+
 		break;
 		case 2:
-			temp.push_back(Tile(Vector2f(32*1 + 32*10 + 16, 32*5), tileLightTexture32));
+			temp.push_back(Tile(Vector2f(32*3, 32*0), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*4, 32*0), tileDarkTexture32_2));
+			temp.push_back(Tile(Vector2f(32*5, 32*0), tileDarkTexture32_2));
+			temp.push_back(Tile(Vector2f(32*6, 32*0), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*3, 32*1), tileDarkTexture32_4));
+			temp.push_back(Tile(Vector2f(32*4, 32*1), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*5, 32*1), tileDarkTexture32_8));
+			temp.push_back(Tile(Vector2f(32*6, 32*1), tileDarkTexture32_9));
+			temp.push_back(Tile(Vector2f(32*3, 32*2), tileDarkTexture32_4));
+			temp.push_back(Tile(Vector2f(32*4, 32*2), tileDarkTexture32_6));
+			temp.push_back(Tile(Vector2f(32*3, 32*3), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*4, 32*3), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*13, 32*0), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*14, 32*0), tileDarkTexture32_2));
+			temp.push_back(Tile(Vector2f(32*15, 32*0), tileDarkTexture32_2));
+			temp.push_back(Tile(Vector2f(32*16, 32*0), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*13, 32*1), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*14, 32*1), tileDarkTexture32_8));
+			temp.push_back(Tile(Vector2f(32*15, 32*1), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*16, 32*1), tileDarkTexture32_6));
+			temp.push_back(Tile(Vector2f(32*15, 32*2), tileDarkTexture32_4));
+			temp.push_back(Tile(Vector2f(32*16, 32*2), tileDarkTexture32_6));
+			temp.push_back(Tile(Vector2f(32*15, 32*3), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*16, 32*3), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*7, 32*4), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*8, 32*4), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*6, 32*5), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*7, 32*5), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*8, 32*5), tileDarkTexture32_9));
+			temp.push_back(Tile(Vector2f(32*6, 32*6), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*7, 32*6), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*11, 32*4), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*12, 32*4), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*11, 32*5), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*12, 32*5), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*13, 32*5), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*12, 32*6), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*13, 32*6), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*6, 32*8), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*7, 32*8), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*6, 32*9), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*7, 32*9), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*8, 32*9), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*7, 32*10), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*8, 32*10), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*12, 32*8), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*13, 32*8), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*11, 32*9), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*12, 32*9), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*13, 32*9), tileDarkTexture32_9));
+			temp.push_back(Tile(Vector2f(32*11, 32*10), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*12, 32*10), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*3, 32*11), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*4, 32*11), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*3, 32*12), tileDarkTexture32_4));
+			temp.push_back(Tile(Vector2f(32*4, 32*12), tileDarkTexture32_6));
+			temp.push_back(Tile(Vector2f(32*3, 32*13), tileDarkTexture32_4));
+			temp.push_back(Tile(Vector2f(32*4, 32*13), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*5, 32*13), tileDarkTexture32_2));
+			temp.push_back(Tile(Vector2f(32*6, 32*13), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*3, 32*14), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*4, 32*14), tileDarkTexture32_8));
+			temp.push_back(Tile(Vector2f(32*5, 32*14), tileDarkTexture32_8));
+			temp.push_back(Tile(Vector2f(32*6, 32*14), tileDarkTexture32_9));
+
+			temp.push_back(Tile(Vector2f(32*15, 32*11), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*16, 32*11), tileDarkTexture32_3));
+			temp.push_back(Tile(Vector2f(32*15, 32*12), tileDarkTexture32_4));
+			temp.push_back(Tile(Vector2f(32*16, 32*12), tileDarkTexture32_6));
+			temp.push_back(Tile(Vector2f(32*13, 32*13), tileDarkTexture32_1));
+			temp.push_back(Tile(Vector2f(32*14, 32*13), tileDarkTexture32_2));
+			temp.push_back(Tile(Vector2f(32*15, 32*13), tileDarkTexture32_5));
+			temp.push_back(Tile(Vector2f(32*16, 32*13), tileDarkTexture32_6));
+			temp.push_back(Tile(Vector2f(32*13, 32*14), tileDarkTexture32_7));
+			temp.push_back(Tile(Vector2f(32*14, 32*14), tileDarkTexture32_8));
+			temp.push_back(Tile(Vector2f(32*15, 32*14), tileDarkTexture32_8));
+			temp.push_back(Tile(Vector2f(32*16, 32*14), tileDarkTexture32_9));
+
 		break;
 		case 3:
-			temp.push_back(Tile(Vector2f(32*4, 32*7), tileDarkTexture64));
-			temp.push_back(Tile(Vector2f(32*3, 32*5), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*6, 32*3), tileDarkTexture32));
+            temp.push_back(Tile(Vector2f(32*1, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*4, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*8, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*0), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*16, 32*0), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*0), tileDarkTexture32_10));
 
-			temp.push_back(Tile(Vector2f(32*4 + 64*5, 32*2), tileLightTexture64));
-			temp.push_back(Tile(Vector2f(32*3 + 32*10, 32*6), tileLightTexture32));
-			temp.push_back(Tile(Vector2f(32*6 + 32*10, 32*9), tileLightTexture32));
+            temp.push_back(Tile(Vector2f(32*1, 32*1), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*1), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*1, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*8, 32*2), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*2), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*2), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*2), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*2), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*18, 32*2), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*2), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*0, 32*3), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*1, 32*3), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*3), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*3), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*3), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*3), tileLightTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*3, 32*4), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*4), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*4), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*4), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*8, 32*4), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*4), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*4), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*4), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*4), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*4), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*16, 32*4), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*4), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*4), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*0, 32*5), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*1, 32*5), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*2, 32*5), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*5), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*5), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*8, 32*5), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*5), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*5), tileLightTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*5, 32*6), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*6), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*8, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*6), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*6), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*6), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*16, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*6), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*18, 32*6), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*6), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*0, 32*7), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*1, 32*7), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*2, 32*7), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*7), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*7), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*7), tileLightTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*0, 32*8), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*1, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*4, 32*8), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*8), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*8), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*8), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*16, 32*8), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*8), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*8), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*7, 32*9), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*9), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*9), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*9), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*9), tileLightTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*0, 32*10), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*1, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*4, 32*10), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*10), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*10), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*10), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*10), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*10), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*1, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*11), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*18, 32*11), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*11), tileLightTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*0, 32*12), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*1, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*8, 32*12), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*12), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*18, 32*12), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*19, 32*12), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*2, 32*13), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*3, 32*13), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*5, 32*13), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*12), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*17, 32*12), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*18, 32*12), tileDarkTexture32_10));
+
+            temp.push_back(Tile(Vector2f(32*5, 32*14), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*6, 32*14), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*7, 32*14), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*9, 32*14), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*10, 32*14), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*11, 32*14), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*12, 32*14), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*13, 32*14), tileDarkTexture32_10));
+            temp.push_back(Tile(Vector2f(32*14, 32*14), tileLightTexture32_10));
+            temp.push_back(Tile(Vector2f(32*15, 32*14), tileDarkTexture32_10));
+
+
 		break;
 		case 4:
-			temp.push_back(Tile(Vector2f(32*3, 32*1), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*1, 32*3), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*5, 32*3), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*3, 32*5), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*7, 32*5), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*7, 32*10), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*3, 32*10), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*5, 32*12), tileDarkTexture32));
-			temp.push_back(Tile(Vector2f(32*7, 32*10), tileDarkTexture32));
 
-			//temp.push_back(Tile(Vector2f(32*4, 32*7), tileDarkTexture64));
-			temp.push_back(Tile(Vector2f(32*8, 32*7), tileDarkTexture64));
+//			temp.push_back(Tile(Vector2f(32*2 + 32*10, 32*2), tileLightTexture32));
+//			temp.push_back(Tile(Vector2f(32*5 + 32*10, 32*11), tileLightTexture32));
 
-			temp.push_back(Tile(Vector2f(32*2 + 32*10, 32*2), tileLightTexture32));
-			temp.push_back(Tile(Vector2f(32*5 + 32*10, 32*11), tileLightTexture32));
-
-			temp.push_back(Tile(Vector2f(32*3 + 32*10, 32*1), tileLightTexture64));
-			temp.push_back(Tile(Vector2f(32*8 + 32*10, 32*6), tileLightTexture64));
-			temp.push_back(Tile(Vector2f(32*3 + 32*10, 32*11), tileLightTexture64));
 		break;
 	}
 	return temp;
