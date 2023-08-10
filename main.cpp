@@ -1404,49 +1404,213 @@ void update()
 	}
 }
 
+void waitUntilKeyPressed()
+{
+    SDL_Event e;
+    while (true) {
+        if ( SDL_WaitEvent(&e) != 0 &&
+             (e.type == SDL_KEYDOWN || e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_QUIT) )
+            return;
+        SDL_Delay(100);
+    }
+}
 
 void graphics()
 {
 	window.clear();
-	window.render(0, 0, bgTexture);
+	window.render(0, 0, bgTextureLight);
+	//chu y thu tu load query
 	for (Hole& h : holes)
 	{
 		window.render(h);
 	}
-	for (Ball& b : balls)
-	{
-		if (!b.isWin())
-		{
-			window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
-		}
-		for (Entity& e : b.getPoints())
-		{
-			window.render(e);
-		}
-		window.render(b);
-	}
+	for (Sand& s : sands)
+    {
+        window.render(s);
+    }
+    for (Water& w : waters)
+    {
+        window.render(w);
+    }
+    for (Ice& i : ices)
+    {
+        window.render(i);
+    }
+    for (Spring& s : springs)
+    {
+        window.render(s);
+    }
+    /**ham render khi win, render diem**/
+    if (checkGolfBall || (!(checkGolfBall) && !(checkAPlus) && !(checkPenguin) && !(checkTVHSV) && !(checkJAPIT) && !(checkAnya)))
+    {
+        for (Ball& b : ballsGolf)
+        {
+            if (!b.isWin())
+            {
+                window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
+            }
+            for (Entity& e : b.getPoints())
+            {
+                window.render(e);
+            }
+            window.render(b);
+        }
+    }
+    if (checkAPlus)
+    {
+        for (Ball& b : ballsAPlus)
+        {
+            if (!b.isWin())
+            {
+                window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
+            }
+            for (Entity& e : b.getPoints())
+            {
+                window.render(e);
+            }
+            window.render(b);
+        }
+    }
+    if (checkPenguin)
+    {
+        for (Ball& b : ballsPenguin)
+        {
+            if (!b.isWin())
+            {
+                window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
+            }
+            for (Entity& e : b.getPoints())
+            {
+                window.render(e);
+            }
+            window.render(b);
+        }
+    }
+    if (checkTVHSV)
+    {
+        for (Ball& b : ballsTVHSV)
+        {
+            if (!b.isWin())
+            {
+                window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
+            }
+            for (Entity& e : b.getPoints())
+            {
+                window.render(e);
+            }
+            window.render(b);
+        }
+    }
+    if (checkJAPIT)
+    {
+        for (Ball& b : ballsJAPIT)
+        {
+            if (!b.isWin())
+            {
+                window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
+            }
+            for (Entity& e : b.getPoints())
+            {
+                window.render(e);
+            }
+            window.render(b);
+        }
+    }
+    if (checkAnya)
+    {
+        for (Ball& b : ballsAnya)
+        {
+            if (!b.isWin())
+            {
+                window.render(b.getPos().x, b.getPos().y + 4, ballShadowTexture);
+            }
+            for (Entity& e : b.getPoints())
+            {
+                window.render(e);
+            }
+            window.render(b);
+        }
+    }
+
 	for (Tile& t : tiles)
 	{
 		window.render(t);
 	}
-	for (Ball& b : balls)
-	{
-		for (Entity& e : b.getPowerBar())
-		{
-			window.render(e);
-		}
-		window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
 
-	}
+    /**Render power bar**/
+    if (checkGolfBall || (!(checkGolfBall) && !(checkAPlus) && !(checkPenguin) && !(checkTVHSV) && !(checkJAPIT) && !(checkAnya)))
+    {
+        for (Ball& b : ballsGolf)
+        {
+            for (Entity& e : b.getPowerBar())
+            {
+                window.render(e);
+            }
+            window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
+        }
+    }
+    if (checkAPlus)
+    {
+         for (Ball& b : ballsAPlus)
+        {
+            for (Entity& e : b.getPowerBar())
+            {
+                window.render(e);
+            }
+            window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
+        }
+    }
+    if (checkPenguin)
+    {
+        for (Ball& b : ballsPenguin)
+        {
+            for (Entity& e : b.getPowerBar())
+            {
+                window.render(e);
+            }
+            window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
+        }
+    }
+    if (checkTVHSV)
+    {
+        for (Ball& b : ballsTVHSV)
+        {
+            for (Entity& e : b.getPowerBar())
+            {
+                window.render(e);
+            }
+            window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
+        }
+    }
+    if (checkJAPIT)
+    {
+        for (Ball& b : ballsJAPIT)
+        {
+            for (Entity& e : b.getPowerBar())
+            {
+                window.render(e);
+            }
+            window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
+        }
+    }
+    if (checkAnya)
+    {
+        for (Ball& b : ballsAnya)
+        {
+            for (Entity& e : b.getPowerBar())
+            {
+                window.render(e);
+            }
+            window.render(b.getPowerBar().at(0).getPos().x, b.getPowerBar().at(0).getPos().y, powerMeterTexture_overlay);
+        }
+    }
+
+	//render text,
 	if (state != 2)
 	{
-		window.render(640/4 - 132/2, 480 - 32, levelTextBgTexture);
-		window.renderCenter(-160, 240 - 16 + 3, getLevelText(0), font24, black);
-		window.renderCenter(-160, 240 - 16, getLevelText(0), font24, white);
-
-		window.render(640/2 + 640/4 - 132/2, 480 - 32, levelTextBgTexture);
-		window.renderCenter(160, 240 - 16 + 3, getLevelText(1), font24, black);
-		window.renderCenter(160, 240 - 16, getLevelText(1), font24, white);
+		window.render(640/2 - 132/2, 480 - 32, levelTextBgTexture);   //can ra giua r tru 1 nua hinh
+		window.renderCenter(0, 240 - 16 + 3, getLevelText(0), font24, black);
+		window.renderCenter(0, 240 - 16, getLevelText(0), font24, white);
 
 		window.render(640/2 - 196/2, 0, uiBgTexture);
 		window.renderCenter(0, -240 + 16 + 3, getStrokeText(), font24, black);
@@ -1454,16 +1618,93 @@ void graphics()
 	}
 	else
 	{
+	    //result win
+	    Mix_PlayChannel(-1, winSfx, 0);
 		window.render(0, 0, endscreenOverlayTexture);
 		window.renderCenter(0, 3 - 32, "YOU COMPLETED THE COURSE!", font48, black);
 		window.renderCenter(0, -32, "YOU COMPLETED THE COURSE!", font48, white);
 		window.renderCenter(0, 3 + 32, getStrokeText(), font32, black);
 		window.renderCenter(0, 32, getStrokeText(), font32, white);
 	}
+
+    /**check result (lose)*/
+    if (checkGolfBall || (!(checkGolfBall) && !(checkAPlus) && !(checkPenguin) && !(checkTVHSV) && !(checkJAPIT) && !(checkAnya)))
+    {
+        if (ballsGolf[0].getStrokes() == 100) {
+            Mix_PlayChannel(-1, loseSfx, 0);
+            window.render(0, 0, endscreenOverlayTexture);
+            window.renderCenter(0, 3 - 32, "YOU LOSE!", font48, black);
+            window.renderCenter(0, -32, "YOU LOSE!", font48, white);
+            window.renderCenter(0, 3 + 32, "Better luck next time!", font32, black);
+            window.renderCenter(0, 32, "Better luck next time!", font32, white);
+            gameRunning = false;
+        }
+    }
+    if (checkAPlus)
+    {
+        if (ballsAPlus[0].getStrokes() == 100) {
+            Mix_PlayChannel(-1, loseSfx, 0);
+            window.render(0, 0, endscreenOverlayTexture);
+            window.renderCenter(0, 3 - 32, "YOU LOSE!", font48, black);
+            window.renderCenter(0, -32, "YOU LOSE!", font48, white);
+            window.renderCenter(0, 3 + 32, "Better luck next time!", font32, black);
+            window.renderCenter(0, 32, "Better luck next time!", font32, white);
+            gameRunning = false;
+        }
+    }
+    if (checkPenguin)
+    {
+        if (ballsPenguin[0].getStrokes() == 100) {
+            Mix_PlayChannel(-1, loseSfx, 0);
+            window.render(0, 0, endscreenOverlayTexture);
+            window.renderCenter(0, 3 - 32, "YOU LOSE!", font48, black);
+            window.renderCenter(0, -32, "YOU LOSE!", font48, white);
+            window.renderCenter(0, 3 + 32, "Better luck next time!", font32, black);
+            window.renderCenter(0, 32, "Better luck next time!", font32, white);
+            gameRunning = false;
+        }
+    }
+    if (checkTVHSV)
+    {
+        if (ballsTVHSV[0].getStrokes() == 100) {
+            Mix_PlayChannel(-1, loseSfx, 0);
+            window.render(0, 0, endscreenOverlayTexture);
+            window.renderCenter(0, 3 - 32, "YOU LOSE!", font48, black);
+            window.renderCenter(0, -32, "YOU LOSE!", font48, white);
+            window.renderCenter(0, 3 + 32, "Better luck next time!", font32, black);
+            window.renderCenter(0, 32, "Better luck next time!", font32, white);
+            gameRunning = false;
+        }
+    }
+    if (checkJAPIT)
+    {
+        if (ballsJAPIT[0].getStrokes() == 100) {
+            Mix_PlayChannel(-1, loseSfx, 0);
+            window.render(0, 0, endscreenOverlayTexture);
+            window.renderCenter(0, 3 - 32, "YOU LOSE!", font48, black);
+            window.renderCenter(0, -32, "YOU LOSE!", font48, white);
+            window.renderCenter(0, 3 + 32, "Better luck next time!", font32, black);
+            window.renderCenter(0, 32, "Better luck next time!", font32, white);
+            gameRunning = false;
+        }
+    }
+    if (checkAnya)
+    {
+        if (ballsAnya[0].getStrokes() == 100) {
+            Mix_PlayChannel(-1, loseSfx, 0);
+            window.render(0, 0, endscreenOverlayTexture);
+            window.renderCenter(0, 3 - 32, "YOU LOSE!", font48, black);
+            window.renderCenter(0, -32, "YOU LOSE!", font48, white);
+            window.renderCenter(0, 3 + 32, "Better luck next time!", font32, black);
+            window.renderCenter(0, 32, "Better luck next time!", font32, white);
+            gameRunning = false;
+        }
+    }
+
 	window.display();
 }
 
-
+// tu day la mau co san
 void game()
 {
 	if (state == 0)
@@ -1472,10 +1713,12 @@ void game()
 	}
 	else
 	{
-		update();
-		graphics();
-	}
+        update();
+        graphics();
+    }
 }
+
+
 int main(int argc, char* args[])
 {
 	loadLevel(level);
@@ -1484,6 +1727,7 @@ int main(int argc, char* args[])
 		game();
 	}
 
+    waitUntilKeyPressed();
 	window.cleanUp();
 	TTF_CloseFont(font32);
 	TTF_CloseFont(font24);
