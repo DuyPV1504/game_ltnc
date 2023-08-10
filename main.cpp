@@ -1106,6 +1106,44 @@ void loadLevel(int level)
         }
     }
 
+    if (checkTVHSV)
+    {
+        ballsTVHSV[0].setVelocity(0, 0);
+        ballsTVHSV[0].setScale(1, 1);
+        ballsTVHSV[0].setWin(false);
+
+        switch (level)
+        {
+            case 0:
+                ballsTVHSV[0].setPos(24 + 32*1, 24 + 32*7);
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 1:
+                ballsTVHSV[0].setPos(95, 383);
+
+                holes.at(0).setPos(640-95, 383);
+            break;
+            case 2:
+                ballsTVHSV[0].setPos(72, 230);
+
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 3:
+                ballsTVHSV[0].setPos(24 + 32*0, 24 + 32*13);
+
+                holes.at(0).setPos(24 + 32*18, 24 + 32*0);
+            break;
+            case 4:
+                ballsTVHSV[0].setPos(8 + 32*1, 6 + 32*0);
+
+                holes.at(0).setPos(8 + 32*9, 6 + 32*7);
+            break;
+        }
+    }
 
 const char* getStrokeText()
 {
