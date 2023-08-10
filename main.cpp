@@ -1145,6 +1145,87 @@ void loadLevel(int level)
         }
     }
 
+if (checkJAPIT)
+    {
+        ballsJAPIT[0].setVelocity(0, 0);
+        ballsJAPIT[0].setScale(1, 1);
+        ballsJAPIT[0].setWin(false);
+
+        switch (level)
+        {
+            case 0:
+                ballsJAPIT[0].setPos(24 + 32*1, 24 + 32*7);
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 1:
+                ballsJAPIT[0].setPos(95, 383);
+
+                holes.at(0).setPos(640-95, 383);
+            break;
+            case 2:
+                ballsJAPIT[0].setPos(72, 230);
+
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 3:
+                ballsJAPIT[0].setPos(24 + 32*0, 24 + 32*13);
+
+                holes.at(0).setPos(24 + 32*18, 24 + 32*0);
+            break;
+            case 4:
+                ballsJAPIT[0].setPos(8 + 32*1, 6 + 32*0);
+
+                holes.at(0).setPos(8 + 32*9, 6 + 32*7);
+            break;
+        }
+    }
+
+    if (checkAnya)
+    {
+        ballsAnya[0].setVelocity(0, 0);
+        ballsAnya[0].setScale(1, 1);
+        ballsAnya[0].setWin(false);
+
+        switch (level)
+        {
+            case 0:
+                ballsAnya[0].setPos(24 + 32*1, 24 + 32*7);
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 1:
+                ballsAnya[0].setPos(95, 383);
+
+                holes.at(0).setPos(640-95, 383);
+            break;
+            case 2:
+                ballsAnya[0].setPos(72, 230);
+
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 3:
+                ballsAnya[0].setPos(24 + 32*0, 24 + 32*13);
+
+                holes.at(0).setPos(24 + 32*18, 24 + 32*0);
+            break;
+            case 4:
+                ballsAnya[0].setPos(8 + 32*1, 6 + 32*0);
+
+                holes.at(0).setPos(8 + 32*9, 6 + 32*7);
+            break;
+        }
+    }
+
+}
+
+
 const char* getStrokeText()
 {
 	int biggestStroke = 0;
