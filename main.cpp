@@ -951,14 +951,29 @@ std::vector<Spring> loadSprings(int level)
 
 int level = 0;
 std::vector<Tile> tiles = loadTiles(level);
+std::vector<Sand> sands = loadSands(level);
+std::vector<Water> waters = loadWaters(level);
+std::vector<Ice> ices = loadIces(level);
+std::vector<Spring> springs = loadSprings(level);
+
+//bool gameRunning = true;
+//bool mouseDown = false;
+//bool mousePressed = false;
+//
+//bool swingPlayed = false;
+//bool secondSwingPlayed = false;
 
 
-int state = 0; //0 = title screen, 1 = game, 2 = end screen
+//SDL_Event event;
+//
+//int state = 0; //0 = title screen, 1 = game, 2 = end screen
+//
+//Uint64 currentTick = SDL_GetPerformanceCounter();
+//Uint64 lastTick = 0;
+//double deltaTime = 0;
 
-Uint64 currentTick = SDL_GetPerformanceCounter();
-Uint64 lastTick = 0;
-double deltaTime = 0;
 
+//load level/ ending screen etc
 void loadLevel(int level)
 {
 	if (level > 4)
@@ -966,54 +981,53 @@ void loadLevel(int level)
 		state = 2;
 		return;
 	}
-	balls[0].setVelocity(0, 0);
-	balls[1].setVelocity(0,0);
-    balls[0].setScale(1, 1);
-	balls[1].setScale(1, 1);
-	balls[0].setWin(false);
-	balls[1].setWin(false);
 
-	tiles = loadTiles(level);
+    tiles = loadTiles(level);
+    sands = loadSands(level);
+    waters = loadWaters(level);
+    ices = loadIces(level);
+    springs = loadSprings(level);
 
-	switch (level)
-	{
-		case 0:
-			balls[0].setPos(24 + 32*4, 24 + 32*11);
-			balls[1].setPos(24 + 32*4 + 32*10, 24 + 32*11);
+    /***Cac ham set vi tri bong va lo ***/
+    if (checkGolfBall || (!(checkGolfBall) && !(checkAPlus) && !(checkPenguin) && !(checkTVHSV) && !(checkJAPIT) && !(checkAnya)))
+    {
+        ballsGolf[0].setVelocity(0, 0);
+        ballsGolf[0].setScale(1, 1);
+        ballsGolf[0].setWin(false);
 
-			holes.at(0).setPos(24 + 32*4, 22 + 32*2);
-			holes.at(1).setPos(24 + 32*4 + 32*10, 22 + 32*2);
-		break;
-		case 1:
-			balls[0].setPos(24 + 32*4, 24 + 32*11);
-			balls[1].setPos(24 + 32*4 + 32*10, 24 + 32*11);
+        switch (level)
+        {
+            case 0:
+                ballsGolf[0].setPos(24 + 32*1, 24 + 32*7);
 
-			holes.at(0).setPos(24 + 32*4, 22 + 32*2);
-			holes.at(1).setPos(24 + 32*4 + 32*10, 22 + 32*2);
-		break;
-		case 2:
-			balls[0].setPos(8 + 32*7, 8 + 32*10);
-			balls[1].setPos(8 + 32*7 + 32*10, 8 + 32*10);
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
 
-			holes.at(0).setPos(8 + 32*2, 6 + 32*5);
-			holes.at(1).setPos(8 + 32*4 + 32*10, 6 + 32*3);
-		break;
-		case 3:
-			balls[0].setPos(24 + 32*4, 24 + 32*5);
-			balls[1].setPos(24 + 32*4 + 32*10, 24 + 32*4);
+            break;
+            case 1:
+                ballsGolf[0].setPos(95, 383);
 
-			holes.at(0).setPos(24 + 32*4, 22 + 32*1);
-			holes.at(1).setPos(24 + 32*4 + 32*10, 22 + 32*11);
-		break;
-		case 4:
-			balls[0].setPos(24 + 32*2, 24 + 32*12);
-			balls[1].setPos(24 + 32*0 + 32*10, 24 + 32*5);
+                holes.at(0).setPos(640-95, 383);
+            break;
+            case 2:
+                ballsGolf[0].setPos(72, 230);
 
-			holes.at(0).setPos(24 + 32*1, 22 + 32*1);
-			holes.at(1).setPos(24 + 32*0 + 32*10, 22 + 32*7);
-		break;
-	}
-}
+
+                holes.at(0).setPos(24 + 32*17, 22 + 32*7);
+
+            break;
+            case 3:
+                ballsGolf[0].setPos(24 + 32*0, 24 + 32*13);
+
+                holes.at(0).setPos(24 + 32*18, 24 + 32*0);
+            break;
+            case 4:
+                ballsGolf[0].setPos(8 + 32*1, 6 + 32*0);
+
+                holes.at(0).setPos(8 + 32*9, 6 + 32*7);
+            break;
+        }
+    }
+
 
 const char* getStrokeText()
 {
