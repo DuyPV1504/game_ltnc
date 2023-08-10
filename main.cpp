@@ -1228,30 +1228,46 @@ if (checkJAPIT)
 
 const char* getStrokeText()
 {
-	int biggestStroke = 0;
-	if (balls[1].getStrokes() > balls[0].getStrokes())
-	{
-		biggestStroke = balls[1].getStrokes();
-	}
-	else
-	{
-		biggestStroke = balls[0].getStrokes();
-	}
+//	int biggestStroke = 0;
+//	if (balls[1].getStrokes() > balls[0].getStrokes())
+//	{
+//		biggestStroke = balls[1].getStrokes();
+//	}
+//	else
+//	{
+//		biggestStroke = balls[0].getStrokes();
+//	}
+    int biggestStroke;
+    if (checkGolfBall || (!(checkGolfBall) && !(checkAPlus) && !(checkPenguin) && !(checkTVHSV) && !(checkJAPIT) && !(checkAnya))) biggestStroke = ballsGolf[0].getStrokes();
+    if (checkAPlus) biggestStroke = ballsAPlus[0].getStrokes();
+    if (checkPenguin) biggestStroke = ballsPenguin[0].getStrokes();
+    if (checkTVHSV) biggestStroke = ballsTVHSV[0].getStrokes();
+    if (checkJAPIT) biggestStroke = ballsJAPIT[0].getStrokes();
+    if (checkAnya) biggestStroke = ballsAnya[0].getStrokes();
 	std::string s = std::to_string(biggestStroke);
-	s = "STROKES: " + s;
+    s = "STROKE: " + s;
 	return s.c_str();
 }
 
 const char* getLevelText(int side)
 {
-	int tempLevel = (level + 1)*2 - 1;
-	if (side == 1)
-	{
-		tempLevel++;
-	}
+	int tempLevel = level + 1;
 	std::string s = std::to_string(tempLevel);
 	s = "HOLE: " + s;
 	return s.c_str();
+}
+
+void transition()
+{
+    if (level <= 4) {
+        window.clear();
+        window.render(0, 0, title_BG);
+        window.render(640/2 - 132/2, 480/2 + 18 - 32, levelTextBgTexture);   //can ra giua r tru 1 nua hinh
+        window.renderCenter(0, 0 + 3, getLevelText(0), font24, black);
+        window.renderCenter(0, 0, getLevelText(0), font24, white);
+        window.display();
+        SDL_Delay(1000);
+    }
 }
 
 void update()
@@ -1270,6 +1286,12 @@ void update()
 		case SDL_QUIT:
 			gameRunning = false;
 			break;
+        case SDL_KEYDOWN:
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+            {
+                gameRunning = false;
+            }
+            break;
 		case SDL_MOUSEBUTTONDOWN:
 			if (event.button.button == SDL_BUTTON_LEFT)
 			{
@@ -1288,17 +1310,100 @@ void update()
 
 	if (state == 1)
 	{
-		for (Ball& b : balls)
-		{
-			b.update(deltaTime, mouseDown, mousePressed, tiles, holes, chargeSfx, swingSfx, holeSfx);
-		}
-		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
- 		{
-        	level++;
-			loadLevel(level);
-    	}
+	    /**Cac ham update bong qua thoi gian va chuyen giao khi bong thu nho (vao lo)**/
+	    if (checkGolfBall || (!(checkGolfBall) && !(checkAPlus) && !(checkPenguin) && !(checkTVHSV) && !(checkJAPIT) && !(checkAnya)))
+        {
+            for (Ball& b : ballsGolf)
+            {
+                b.update(deltaTime, mouseDown, mousePressed, tiles, holes, sands, waters, ices, springs, chargeSfx, swingSfx, holeSfx, waterSfx, bounceSfx);
+            }
+    //		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
+            if (ballsGolf[0].getScale().x < -1)
+            {
+                level++;
+                transition();
+                loadLevel(level);
+            }
+        }
+
+        if (checkAPlus)
+        {
+            for (Ball& b : ballsAPlus)
+            {
+                b.update(deltaTime, mouseDown, mousePressed, tiles, holes, sands, waters, ices, springs, chargeSfx, swingSfx, holeSfx, waterSfx, bounceSfx);
+            }
+    //		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
+            if (ballsAPlus[0].getScale().x < -1)
+            {
+                level++;
+                transition();
+                loadLevel(level);
+            }
+        }
+
+        if (checkPenguin)
+        {
+            for (Ball& b : ballsPenguin)
+            {
+                b.update(deltaTime, mouseDown, mousePressed, tiles, holes, sands, waters, ices, springs, chargeSfx, swingSfx, holeSfx, waterSfx, bounceSfx);
+            }
+    //		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
+            if (ballsPenguin[0].getScale().x < -1)
+            {
+                level++;
+                transition();
+                loadLevel(level);
+            }
+        }
+
+        if (checkTVHSV)
+        {
+            for (Ball& b : ballsTVHSV)
+            {
+                b.update(deltaTime, mouseDown, mousePressed, tiles, holes, sands, waters, ices, springs, chargeSfx, swingSfx, holeSfx, waterSfx, bounceSfx);
+            }
+    //		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
+            if (ballsTVHSV[0].getScale().x < -1)
+            {
+                level++;
+                transition();
+                loadLevel(level);
+            }
+        }
+
+        if (checkJAPIT)
+        {
+            for (Ball& b : ballsJAPIT)
+            {
+                b.update(deltaTime, mouseDown, mousePressed, tiles, holes, sands, waters, ices, springs, chargeSfx, swingSfx, holeSfx, waterSfx, bounceSfx);
+            }
+    //		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
+            if (ballsJAPIT[0].getScale().x < -1)
+            {
+                level++;
+                transition();
+                loadLevel(level);
+            }
+        }
+
+        if (checkAnya)
+        {
+            for (Ball& b : ballsAnya)
+            {
+                b.update(deltaTime, mouseDown, mousePressed, tiles, holes, sands, waters, ices, springs, chargeSfx, swingSfx, holeSfx, waterSfx, bounceSfx);
+            }
+    //		if (balls[0].getScale().x < -1 && balls[1].getScale().x < -1)
+            if (ballsAnya[0].getScale().x < -1)
+            {
+                level++;
+                transition();
+                loadLevel(level);
+            }
+        }
+
 	}
 }
+
 
 void graphics()
 {
